@@ -7,4 +7,4 @@
 final-project-aaron_lloyd created by GitHub Classroom
 <br><br>
 Moved the App Folder index.html and style.css to Client folder to match local machine layout. <br>
-App folder is essentially the same as the client folder, except without index and css - (5/20)
+App folder is essentially the same as the client folder, except without index and css - (5/20) 
