@@ -3,6 +3,9 @@ import { OrdersDatastore } from "./datastore";
 import * as express from 'express';
 import * as morgan from 'morgan';
 import { Request, Response } from 'express';
+import { STATUS_CODES } from "http";
+
+var distDir = __dirname + "/dist";
 
 const bodyParser = require('body-parser');
 
@@ -20,6 +23,8 @@ function startServer(ordersDatastore: OrdersDatastore) {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+
+  app.use(express.static(distDir)); 
 
   const port = process.env.PORT || 3000;
   
@@ -77,6 +82,8 @@ function startServer(ordersDatastore: OrdersDatastore) {
     const username = request.body.username;
     const password = request.body.password;
     const email = request.body.email;
+
+    //var newUser = request.body; 
     try {
       await ordersDatastore.createUser(username, password, email);
       response.sendStatus(201);
@@ -154,6 +161,5 @@ function startServer(ordersDatastore: OrdersDatastore) {
       response.sendStatus(500);
     }
   });
-
 
 }
